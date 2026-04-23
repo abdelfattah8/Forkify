@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forkify — Recipe Finder</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ══ HERO HEADER ══ -->
+  <header class="site-header">
+    <div class="header-bg"></div>
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-icon">🍴</span>
+        <span class="brand-name">Forkify</span>
+      </div>
+      <p class="header-tagline">Discover thousands of recipes instantly</p>
+
+      <div class="search-wrap">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search recipes… try 'pasta', 'chicken', 'tacos'"
+            autocomplete="off"
+          >
+          <button id="btnSearch" class="search-btn">Search</button>
+        </div>
+
+        <div class="popular-tags">
+          <span class="tag-label">Popular:</span>
+          <button class="quick-tag" data-q="pizza">🍕 Pizza</button>
+          <button class="quick-tag" data-q="pasta">🍝 Pasta</button>
+          <button class="quick-tag" data-q="corn">🌽 Corn</button>
+          <button class="quick-tag" data-q="sushi">🍣 Sushi</button>
+          <button class="quick-tag" data-q="salad">🥗 Salad</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ RESULTS ══ -->
+  <main class="main-content">
+    <div class="container">
+      <div id="resultsInfo" class="results-info d-none"></div>
+      <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3" id="recipesRow"></div>
+      <div id="emptyState" class="empty-state d-none">
+        <div class="empty-icon">🔍</div>
+        <h3>No recipes found</h3>
+        <p>Try a different search term</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ MODAL ══ -->
+  <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content recipe-modal">
+        <div class="modal-header recipe-modal-header">
+          <h5 class="modal-title" id="recipeModalLabel">Recipe Details</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0" id="modalBody"></div>
+        <div class="modal-footer recipe-modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <a id="recipeSourceLink" href="#" target="_blank" class="btn btn-recipe-link">
+            Full Recipe ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ LOADING ══ -->
+  <div class="loading d-none" id="loading">
+    <div class="loader-wrap">
+      <div class="fork-loader">
+        <span>🍴</span>
+      </div>
+      <p class="loader-text">Finding recipes…</p>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
